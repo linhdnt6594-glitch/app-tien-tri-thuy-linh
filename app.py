@@ -359,43 +359,21 @@ def health_check():
     })
 
 if __name__ == '__main__':
-    print("🔮 BẮT ĐẦU TECH ORACLE 2026 - ĐẠI PHÁP SƯ THÙY LINH...")
-    print(f"📁 Serving from: {os.path.abspath(os.getcwd())}")
-    print("🌐 Server available at: http://localhost:5000")
-    print("📝 Oracle history will be saved to 'logs/oracle_120.log'")
-    print("✨ 180 oracle cards with cosmic wisdom ready!")
-    print("-" * 50)
-    
-    # Create necessary directories
-    if not os.path.exists('templates'):
-        os.makedirs('templates')
-        print("📁 Created 'templates' directory")
-    
-    if not os.path.exists('static'):
-        os.makedirs('static')
-        print("📁 Created 'static' directory")
-    
-    if not os.path.exists('logs'):
-        os.makedirs('logs')
-        print("📁 Created 'logs' directory")
-    
-    print("-" * 50)
-    print("✅ Oracle server setup complete!")
-    print("🌐 Open http://localhost:5000 in your browser")
-    print("🔮 180 oracle cards ready for reading!")
-    print("⚠️  Press Ctrl+C to stop the server")
-    
     # Check if running on Render.com
     if os.environ.get('RENDER'):
-        app.run(
-            host='0.0.0.0',
-            port=int(os.environ.get('PORT', 5000)),
-            debug=False
-        )
+        port = int(os.environ.get('PORT', 5000))
+        app.run(host='0.0.0.0', port=port, debug=False)
     else:
         # Local development
-        app.run(
-            host='0.0.0.0',
-            port=5000,
-            debug=True
-        )
+        print("🔮 BẮT ĐẦU TECH ORACLE 2026 - ĐẠI PHÁP SƯ THÙY LINH...")
+        print("🌐 Server available at: http://localhost:5000")
+        
+        # Create necessary directories
+        if not os.path.exists('templates'):
+            os.makedirs('templates')
+        if not os.path.exists('static'):
+            os.makedirs('static')
+        if not os.path.exists('logs'):
+            os.makedirs('logs')
+        
+        app.run(host='0.0.0.0', port=5000, debug=True)
